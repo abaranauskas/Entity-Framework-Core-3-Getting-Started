@@ -1,0 +1,42 @@
+﻿//using Microsoft.EntityFrameworkCore;
+//using Microsoft.Extensions.Logging;
+//using SamuraiApp.Domain;
+
+//namespace SamuraiApp.Data
+//{
+//    public class SamuraiContextNoTracking : DbContext
+//    {
+//        public SamuraiContextNoTracking()
+//        {
+//            //contextas nieko netrakinks default yra tracking
+//            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+//        }
+//        public DbSet<Samurai> Samurais { get; set; }
+//        public DbSet<Quote> Quotes { get; set; }
+//        public DbSet<Clan> Clans { get; set; }
+//        public DbSet<Battle> Battles { get; set; }
+
+//        public static readonly ILoggerFactory ConsoleLoggerFactory
+//            = LoggerFactory.Create(builder =>
+//            {
+//                builder.AddFilter((category, level) =>
+//                    category == DbLoggerCategory.Database.Command.Name &&
+//                    level == LogLevel.Information)
+//                .AddConsole();
+//            });
+
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            optionsBuilder
+//                .UseLoggerFactory(ConsoleLoggerFactory)
+//                .EnableSensitiveDataLogging()
+//                .UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SamuraiAppData;Trusted_Connection=True;MultipleActiveResultSets=true");
+//        }
+
+//        protected override void OnModelCreating(ModelBuilder modelBuilder)
+//        {
+//            modelBuilder.Entity<SamuraiBattle>().HasKey(s => new { s.SamuraiId, s.BattleId });
+//            modelBuilder.Entity<Horse>().ToTable("Horses");
+//        }
+//    }
+//}
